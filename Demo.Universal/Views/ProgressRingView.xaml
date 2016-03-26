@@ -1,0 +1,36 @@
+﻿<UserControl
+    x:Class="Fnio.UI.Controls.Demo.Views.ProgressRingView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Fnio.UI.Controls"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <controls:ProgressRing x:Name="DemoProgressRing" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <TextBlock Style="{ThemeResource TitleTextBlockStyle}">ProgressRing</TextBlock>
+            <TextBlock Text="Radius" Margin="0,20,0,0"/>
+            <Slider Value="{Binding Radius, ElementName=DemoProgressRing, Mode=TwoWay}" Maximum="1000"/>
+
+            <TextBlock Text="Thickness"/>
+            <Slider Value="{Binding Thickness, ElementName=DemoProgressRing, Mode=TwoWay}"/>
+
+            <TextBlock Text="Value"/>
+            <Slider Value="{Binding Value, ElementName=DemoProgressRing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Text="FontSize"/>
+            <Slider Value="{Binding FontSize, ElementName=DemoProgressRing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

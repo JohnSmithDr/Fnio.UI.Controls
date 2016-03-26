@@ -1,0 +1,47 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Fnio.UI.Controls">
+
+    <Style TargetType="local:ProgressRing">
+        <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
+        <Setter Property="IndicatorBrush" Value="{StaticResource ProgressBarForegroundThemeBrush}"/>
+        <Setter Property="TrackBrush" Value="{StaticResource ProgressBarBackgroundThemeBrush}"/>
+        <Setter Property="Thickness" Value="10"/>
+        <Setter Property="Radius" Value="100"/>
+        <Setter Property="Maximum" Value="100"/>
+        <Setter Property="Minimum" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ProgressRing">
+                    <Grid>
+                        <Path x:Name="trackPath" StrokeThickness="{TemplateBinding Thickness}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path.Data>
+                                <EllipseGeometry x:Name="trackEllipse"/>
+                            </Path.Data>
+                        </Path>
+                        <Path x:Name="indicatorPath" Stroke="{TemplateBinding IndicatorBrush}" StrokeThickness="{TemplateBinding Thickness}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathGeometry.Figures>
+                                        <PathFigureCollection>
+                                            <PathFigure x:Name="indicatorFigure">
+                                                <PathFigure.Segments>
+                                                    <PathSegmentCollection>
+                                                        <ArcSegment x:Name="indicatorArc" SweepDirection="Clockwise" />
+                                                    </PathSegmentCollection>
+                                                </PathFigure.Segments>
+                                            </PathFigure>
+                                        </PathFigureCollection>
+                                    </PathGeometry.Figures>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                        <TextBlock x:Name="percentageText" FontSize="{TemplateBinding FontSize}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
