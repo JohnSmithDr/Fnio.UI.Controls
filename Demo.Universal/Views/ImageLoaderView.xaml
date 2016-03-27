@@ -15,7 +15,11 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Border>
-                <controls:ImageLoader x:Name="DemoImageLoader"/>
+                <controls:ImageLoader x:Name="DemoImageLoader">
+                    <controls:ImageLoader.Indicator>
+                        <controls:ProgressIndicatorRing Radius="40"/>
+                    </controls:ImageLoader.Indicator>
+                </controls:ImageLoader>
             </Border>
             <StackPanel VerticalAlignment="Center" Grid.Column="2">
                 <TextBlock Style="{ThemeResource TitleTextBlockStyle}">

@@ -83,6 +83,8 @@ namespace Fnio.UI.Controls.Demo.Universal.Views
             {
                 var dialog = new MessageDialog($"Failed to load image from: {_uriSource}", "ERROR");
                 var run = dialog.ShowAsync();
+
+                Debug.WriteLine(e.ErrorMessage);
             };
         }
 

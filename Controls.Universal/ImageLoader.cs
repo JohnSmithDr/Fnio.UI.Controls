@@ -211,6 +211,9 @@ namespace Fnio.UI.Controls
             ImageContainer = GetTemplateChild("ImageContainer") as Image;
 
             _inited = true;
+
+            // hide indicator
+            if (Indicator != null) Indicator.Visibility = Visibility.Collapsed;
         }
 
         private void BeginLoading(Uri source)
