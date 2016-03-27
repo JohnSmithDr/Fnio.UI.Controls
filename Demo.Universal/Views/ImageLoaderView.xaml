@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="Fnio.UI.Controls.Demo.Universal.Views.ImageLoaderView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Fnio.UI.Controls"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Margin="40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Border>
+                <controls:ImageLoader x:Name="DemoImageLoader"/>
+            </Border>
+            <StackPanel VerticalAlignment="Center" Grid.Column="2">
+                <TextBlock Style="{ThemeResource TitleTextBlockStyle}">
+            		<Run Text="ImageLoader"/>
+                </TextBlock>
+                <StackPanel Margin="0,40,0,0">
+                    <TextBox x:Name="FileInputText" Header="Load from file" IsReadOnly="True" />
+                    <Button x:Name="LoadFileButton" Margin="0,20,0,0" Content="Load From File"/>
+                </StackPanel>
+                <StackPanel Margin="0,40,0,0">
+                    <TextBox x:Name="UrlInputText" Header="Load from url" />
+                    <Button x:Name="LoadUrlButton" Margin="0,20,0,0" Content="Load From Url"/>
+                </StackPanel>
+                <StackPanel Margin="0,40,0,0">
+                    <ComboBox x:Name="StretchSelector" Header="Stretch" HorizontalAlignment="Stretch" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

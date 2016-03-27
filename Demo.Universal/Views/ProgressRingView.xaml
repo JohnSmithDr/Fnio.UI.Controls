@@ -9,29 +9,21 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <Grid Margin="40,0,39.8,0">
+        <Grid Margin="40">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
             <controls:ProgressRing x:Name="DemoProgressRing" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-            <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                <TextBlock Style="{ThemeResource TitleTextBlockStyle}">
-					<Run Text="ProgressRing"/>
-                </TextBlock>
-                <TextBlock Text="Radius" Margin="0,20,0,0"/>
-                <Slider Value="{Binding Radius, ElementName=DemoProgressRing, Mode=TwoWay}" Maximum="1000"/>
-
-                <TextBlock Text="Thickness"/>
-                <Slider Value="{Binding Thickness, ElementName=DemoProgressRing, Mode=TwoWay}"/>
-
-                <TextBlock Text="Value"/>
-                <Slider Value="{Binding Value, ElementName=DemoProgressRing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-
-                <TextBlock Text="FontSize"/>
-                <Slider Value="{Binding FontSize, ElementName=DemoProgressRing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                <TextBlock Style="{ThemeResource TitleTextBlockStyle}">ProgressRing</TextBlock>
+                <Slider Header="Radius" Value="{Binding Radius, ElementName=DemoProgressRing, Mode=TwoWay}" Maximum="1000" Margin="0,40,0,0"/>
+                <Slider Header="Thickness" Value="{Binding Thickness, ElementName=DemoProgressRing, Mode=TwoWay}" Margin="0,20,0,0"/>
+                <Slider Header="Value" Value="{Binding Value, ElementName=DemoProgressRing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,20,0,0"/>
+                <Slider Header="FontSize" Value="{Binding FontSize, ElementName=DemoProgressRing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,20,0,0"/>
             </StackPanel>
         </Grid>
     </Grid>

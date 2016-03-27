@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -160,6 +163,11 @@ namespace Fnio.UI.Controls
 
         #endregion
 
+        public ImageLoader()
+        {
+            DefaultStyleKey = typeof (ImageLoader);
+        }
+
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -179,8 +187,35 @@ namespace Fnio.UI.Controls
             }
 
             IsLoading = true;
+
+            if (source.IsFile)
+            {
+                var _ = LoadingFromFileAsync(source);
+                return;
+            }
+
             ImageSource = new BitmapImage(source);
             ImageContainer.Source = ImageSource;
+        }
+
+        private async Task LoadingFromFileAsync(Uri source)
+        {
+            try
+            {
+                var file = await StorageFile.GetFileFromPathAsync(source.LocalPath);
+                var fileStream = await file.OpenReadAsync();
+                using (fileStream)
+                {
+                    ImageSource = new BitmapImage();
+                    await ImageSource.SetSourceAsync(fileStream);
+
+                    ImageContainer.Source = ImageSource;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
         }
 
         private void EndLoading()

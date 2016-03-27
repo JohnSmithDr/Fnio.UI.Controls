@@ -102,6 +102,9 @@
     <Compile Include="Views\DefaultView.xaml.cs">
       <DependentUpon>DefaultView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ImageLoaderView.xaml.cs">
+      <DependentUpon>ImageLoaderView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProgressRingView.xaml.cs">
       <DependentUpon>ProgressRingView.xaml</DependentUpon>
     </Compile>
@@ -136,6 +139,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\DefaultView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ImageLoaderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

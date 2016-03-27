@@ -30,7 +30,7 @@ namespace Fnio.UI.Controls.Demo.Universal
                     return;
                 }
 
-                var viewType = Views["ProgressRingView"];
+                var viewType = Views[item];
 
                 if (viewType == null)
                 {
@@ -43,7 +43,8 @@ namespace Fnio.UI.Controls.Demo.Universal
 
         private static readonly Dictionary<string, Type> Views = new Dictionary<string, Type>
         {
-            { "ProgressRingView", typeof(ProgressRingView) }
+            { "ProgressRingView", typeof(ProgressRingView) },
+            { "ImageLoaderView", typeof(ImageLoaderView) }
         };
     }
 }

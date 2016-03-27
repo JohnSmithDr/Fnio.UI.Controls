@@ -4,6 +4,7 @@
     xmlns:local="using:Fnio.UI.Controls">
 
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ms-appx:///Fnio.UI.Controls.Universal/Themes/ImageLoader.xaml" />
         <ResourceDictionary Source="ms-appx:///Fnio.UI.Controls.Universal/Themes/ProgressRing.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
