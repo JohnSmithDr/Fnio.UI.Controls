@@ -1,30 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Fnio.UI.Controls.Demo.Universal.Views;
 
-//“空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 上有介绍
-
-namespace Demo.Universal
+namespace Fnio.UI.Controls.Demo.Universal
 {
-    /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+
+            Loaded += (sender, e) =>
+            {
+                ContentFrame.Navigate(typeof (DefaultView));
+            };
+
+            ContentFrame.Navigating += (sender, e) => VisualStateManager.GoToState(this, "ProgressStateLoading", true);
+
+            ContentFrame.Navigated += (sender, e) => VisualStateManager.GoToState(this, "ProgressStateNone", true);
+
+            DemoSelector.SelectionChanged += (sender, e) =>
+            {
+                var item = DemoSelector.SelectedValue as string;
+
+                if (string.IsNullOrEmpty(item))
+                {
+                    return;
+                }
+
+                var viewType = Views["ProgressRingView"];
+
+                if (viewType == null)
+                {
+                    return;
+                }
+
+                ContentFrame.Navigate(viewType);
+            };
         }
+
+        private static readonly Dictionary<string, Type> Views = new Dictionary<string, Type>
+        {
+            { "ProgressRingView", typeof(ProgressRingView) }
+        };
     }
 }

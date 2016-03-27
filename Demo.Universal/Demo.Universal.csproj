@@ -7,7 +7,7 @@
     <ProjectGuid>{DBFBECB6-EE86-4C8F-8906-E47F1D75A644}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fnio.UI.Controls.Demo</RootNamespace>
+    <RootNamespace>Fnio.UI.Controls.Demo.Universal</RootNamespace>
     <AssemblyName>Fnio.UI.Controls.Demo.Universal</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
@@ -99,6 +99,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\DefaultView.xaml.cs">
+      <DependentUpon>DefaultView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProgressRingView.xaml.cs">
       <DependentUpon>ProgressRingView.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,10 @@
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DefaultView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProgressRingView.xaml">
       <SubType>Designer</SubType>
