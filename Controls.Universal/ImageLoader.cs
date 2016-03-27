@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
@@ -96,6 +97,8 @@ namespace Fnio.UI.Controls
         private void OnImageDownloadProgress(object sender, DownloadProgressEventArgs e)
         {
             IsLoading = true;
+            LoadingProgress = e.Progress;
+            UpdateIndicator(e.Progress);
             ImageLoading?.Invoke(this, e);
         }
 
@@ -159,7 +162,41 @@ namespace Fnio.UI.Controls
                 "IsLoading",
                 typeof(bool),
                 typeof(ImageLoader),
-                new PropertyMetadata(false)); 
+                new PropertyMetadata(false));
+
+        #endregion
+
+        #region LoadingProgress dependency property
+
+        public double LoadingProgress
+        {
+            get { return (double)GetValue(LoadingProgressProperty); }
+            private set { SetValue(LoadingProgressProperty, value); }
+        }
+
+        public static readonly DependencyProperty LoadingProgressProperty =
+            DependencyProperty.Register(
+                "LoadingProgress",
+                typeof(double),
+                typeof(ImageLoader),
+                new PropertyMetadata(0d));
+
+        #endregion
+
+        #region Indicator dependency property
+
+        public Control Indicator
+        {
+            get { return (Control)GetValue(IndicatorProperty); }
+            set { SetValue(IndicatorProperty, value); }
+        }
+
+        public static readonly DependencyProperty IndicatorProperty =
+            DependencyProperty.Register(
+                "Indicator",
+                typeof(Control),
+                typeof(ImageLoader),
+                new PropertyMetadata(null)); 
 
         #endregion
 
@@ -187,6 +224,7 @@ namespace Fnio.UI.Controls
             }
 
             IsLoading = true;
+            LoadingProgress = 0d;
 
             if (source.IsFile)
             {
@@ -194,6 +232,7 @@ namespace Fnio.UI.Controls
                 return;
             }
 
+            ShowIndicator();
             ImageSource = new BitmapImage(source);
             ImageContainer.Source = ImageSource;
         }
@@ -221,6 +260,43 @@ namespace Fnio.UI.Controls
         private void EndLoading()
         {
             IsLoading = false;
+            LoadingProgress = 0d;
+            HideIndicator();
+        }
+
+        private void ShowIndicator()
+        {
+            if (Indicator == null) return;
+
+            Indicator.Visibility = Visibility.Visible;
+
+            var rangeBaseIndicator = Indicator as RangeBase;
+
+            if (rangeBaseIndicator == null) return;
+
+            rangeBaseIndicator.Value = 0d;
+        }
+
+        private void HideIndicator()
+        {
+            if (Indicator == null) return;
+
+            Indicator.Visibility = Visibility.Collapsed;
+
+            var rangeBaseIndicator = Indicator as RangeBase;
+
+            if (rangeBaseIndicator == null) return;
+
+            rangeBaseIndicator.Value = 0d;
+        }
+
+        private void UpdateIndicator(int progress)
+        {
+            var rangeBaseIndicator = Indicator as RangeBase;
+
+            if (rangeBaseIndicator == null) return;
+
+            rangeBaseIndicator.Value = progress;
         }
 
         private bool _inited;

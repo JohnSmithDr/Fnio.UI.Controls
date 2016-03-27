@@ -2,9 +2,9 @@
 
 namespace Fnio.UI.Controls.Demo.Universal.Views
 {
-    public sealed partial class ProgressRingView : Page
+    public sealed partial class ProgressIndicatorRingView : Page
     {
-        public ProgressRingView()
+        public ProgressIndicatorRingView()
         {
             this.InitializeComponent();
         }

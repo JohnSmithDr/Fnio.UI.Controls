@@ -108,7 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ImageLoader.cs" />
-    <Compile Include="ProgressRing.cs" />
+    <Compile Include="ProgressIndicatorRing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Controls.Universal.rd.xml" />
   </ItemGroup>
@@ -123,7 +123,7 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="Themes\ProgressRing.xaml">
+    <Page Include="Themes\ProgressIndicatorRing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -9,6 +9,7 @@
                 <ControlTemplate TargetType="controls:ImageLoader">
                     <Grid>
                         <Image x:Name="ImageContainer" Stretch="{TemplateBinding Stretch}"/>
+                        <ContentPresenter x:Name="IndicatorPresenter" Content="{TemplateBinding Indicator}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

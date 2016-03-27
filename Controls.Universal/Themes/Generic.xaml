@@ -5,7 +5,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ms-appx:///Fnio.UI.Controls.Universal/Themes/ImageLoader.xaml" />
-        <ResourceDictionary Source="ms-appx:///Fnio.UI.Controls.Universal/Themes/ProgressRing.xaml" />
+        <ResourceDictionary Source="ms-appx:///Fnio.UI.Controls.Universal/Themes/ProgressIndicatorRing.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

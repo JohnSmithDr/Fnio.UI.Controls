@@ -8,9 +8,8 @@ using Windows.UI.Xaml.Shapes;
 
 namespace Fnio.UI.Controls
 {
-    public class ProgressRing : RangeBase
+    public class ProgressIndicatorRing : RangeBase
     {
-
         private bool inited;
         private Path indicatorPath;
         private PathFigure indicatorFigure;
@@ -28,7 +27,7 @@ namespace Fnio.UI.Controls
 
         public static DependencyProperty TrackBrushProperty { get; } =
             DependencyProperty.Register(
-              "TrackBrush", typeof(Brush), typeof(ProgressRing), new PropertyMetadata(null));
+              "TrackBrush", typeof(Brush), typeof(ProgressIndicatorRing), new PropertyMetadata(null));
         #endregion
 
         #region IndicatorBrush
@@ -40,7 +39,7 @@ namespace Fnio.UI.Controls
 
         public static DependencyProperty IndicatorBrushProperty { get; } =
             DependencyProperty.Register(
-              "IndicatorBrush", typeof(Brush), typeof(ProgressRing), new PropertyMetadata(null));
+              "IndicatorBrush", typeof(Brush), typeof(ProgressIndicatorRing), new PropertyMetadata(null));
         #endregion
 
         #region Thickness
@@ -54,12 +53,12 @@ namespace Fnio.UI.Controls
             DependencyProperty.Register(
               "Thickness",
               typeof(double),
-              typeof(ProgressRing),
+              typeof(ProgressIndicatorRing),
               new PropertyMetadata(0d, OnThicknessPropertyChanged));
 
         private static void OnThicknessPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var obj = d as ProgressRing;
+            var obj = d as ProgressIndicatorRing;
             obj?.OnThicknessChanged((double)e.OldValue, (double)e.NewValue);
         }
 
@@ -80,12 +79,12 @@ namespace Fnio.UI.Controls
             DependencyProperty.Register(
               "Radius",
               typeof(double),
-              typeof(ProgressRing),
+              typeof(ProgressIndicatorRing),
               new PropertyMetadata(0d, OnRadiusPropertyChanged));
 
         private static void OnRadiusPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as ProgressRing)?.OnRadiusChanged((double)e.OldValue, (double)e.NewValue);
+            (d as ProgressIndicatorRing)?.OnRadiusChanged((double)e.OldValue, (double)e.NewValue);
         }
 
         private void OnRadiusChanged(double oldValue, double newValue)
@@ -94,9 +93,9 @@ namespace Fnio.UI.Controls
         }
         #endregion
 
-        public ProgressRing()
+        public ProgressIndicatorRing()
         {
-            DefaultStyleKey = typeof(ProgressRing);
+            DefaultStyleKey = typeof(ProgressIndicatorRing);
         }
 
         protected override void OnApplyTemplate()
@@ -163,5 +162,14 @@ namespace Fnio.UI.Controls
             indicatorArc.IsLargeArc = angle > 180.0;
         }
 
+        #region IProgressIndicator
+
+        public void Show() => Visibility = Visibility.Visible;
+
+        public void Hide() => Visibility = Visibility.Collapsed;
+
+        public void ReportProgress(double progress) => Value = progress;
+
+        #endregion
     }
 }

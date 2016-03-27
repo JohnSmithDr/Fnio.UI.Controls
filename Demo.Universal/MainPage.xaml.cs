@@ -43,8 +43,8 @@ namespace Fnio.UI.Controls.Demo.Universal
 
         private static readonly Dictionary<string, Type> Views = new Dictionary<string, Type>
         {
-            { "ProgressRingView", typeof(ProgressRingView) },
-            { "ImageLoaderView", typeof(ImageLoaderView) }
+            { "ImageLoaderView", typeof(ImageLoaderView) },
+            { "ProgressIndicatorRingView", typeof(ProgressIndicatorRingView) },
         };
     }
 }

@@ -27,8 +27,8 @@
             <RelativePanel Margin="40,0,0,0">
                 <TextBlock x:Name="DemoTitle" Style="{ThemeResource TitleTextBlockStyle}" RelativePanel.AlignVerticalCenterWithPanel="True">Demo</TextBlock>
                 <ComboBox x:Name="DemoSelector" RelativePanel.RightOf="DemoTitle" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="20,0,0,0" SelectedValuePath="Tag">
-                    <ComboBoxItem Content="ProgressRing" Tag="ProgressRingView"/>
                     <ComboBoxItem Content="ImageLoader" Tag="ImageLoaderView"/>
+                    <ComboBoxItem Content="ProgressIndicatorRing" Tag="ProgressIndicatorRingView"/>
                 </ComboBox>
             </RelativePanel>
             <ProgressBar x:Name="ProgressIndicator" IsIndeterminate="True" VerticalAlignment="Top" Visibility="Collapsed"/>
