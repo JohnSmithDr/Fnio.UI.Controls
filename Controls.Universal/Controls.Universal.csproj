@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C505372A-9DE2-47DE-917D-D03BCB24C177}</ProjectGuid>
+    <ProjectGuid>{0CD46B1F-5750-4F4B-A3AC-69830C15BCEC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Fnio.UI.Controls</RootNamespace>
-    <AssemblyName>Fnio.UI.Controls.ProgressRing.Universal</AssemblyName>
+    <AssemblyName>Fnio.UI.Controls.Universal</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
@@ -107,14 +107,20 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImageLoader.cs" />
     <Compile Include="ProgressRing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\ProgressRing.Universal.rd.xml" />
+    <EmbeddedResource Include="Properties\Controls.Universal.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Themes\ProgressRing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
   </ItemGroup>

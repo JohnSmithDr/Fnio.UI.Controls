@@ -138,12 +138,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProgressRing.Universal\ProgressRing.Universal.csproj">
-      <Project>{c505372a-9de2-47de-917d-d03bcb24c177}</Project>
-      <Name>ProgressRing.Universal</Name>
+    <ProjectReference Include="..\Controls.Universal\Controls.Universal.csproj">
+      <Project>{0cd46b1f-5750-4f4b-a3ac-69830c15bcec}</Project>
+      <Name>Controls.Universal</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
